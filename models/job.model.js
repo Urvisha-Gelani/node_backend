@@ -4,8 +4,8 @@ import { setUpdatedAt } from "../middlewares/updateTimestamp.middleware.js";
 const JobSchema = new mongoose.Schema(
   {
     id: { type: Number, required: true, unique: true },
-    client_name: { type: String, required: true, unique: true },
-    job_title: { type: String, required: true, unique: true },
+    client_name: { type: String, required: true },
+    job_title: { type: String, required: true },
     quote: { type: String, required: true },
     job_date: { type: Date, required: true },
     status: {
