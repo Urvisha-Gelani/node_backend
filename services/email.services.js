@@ -10,6 +10,16 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
 });
+export const sendWelcomeEmail = async (toEmail, token, username) => {
+  const mailOptions = {
+    from: `MyApp Team <${process.env.EMAIL_USER}>`,
+    to: toEmail,
+    subject: "🎉 Welcome On Board!",
+    html: `<h2>👋 Welcome to MyApp, ${username}</h2><p>Welcome to the platform. We're excited to have you with us! ${token}</p>`,
+  };
+
+  await transporter.sendMail(mailOptions);
+};
 
 export const sendUserRegisterEmail = async (username, toEmail) => {
   const mailOptions = {

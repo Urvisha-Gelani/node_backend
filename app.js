@@ -2,6 +2,7 @@ import express from "express";
 import corsMiddleware from "./config/cors.config.js";
 import userRoutes from "./routes/auth.routes.js";
 import errorHandler from "./middlewares/error.middleware.js";
+import jobRoutes from "./routes/job.routes.js";
 // import userRoutes from "./routes/user.routes.js";
 // import corsMiddleware from "./config/cors.config.js";
 // import logInRouter from "./routes/auth.routes.js";
@@ -16,6 +17,7 @@ app.use(express.json());
 console.log("process.cwd()", process.cwd());
 
 app.use("/api/v1", userRoutes);
+app.use("/api/v1", jobRoutes);
 // app.use("/", logInRouter);
 // app.use("/", paymentRouter);
 

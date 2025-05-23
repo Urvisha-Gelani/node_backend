@@ -8,11 +8,15 @@ dotenv.config();
 
 const userRegister = async (userData) => {
   const nextUserId = await generateUniqueId("userId");
-
+  const token = jwt.sign({ id: nextUserId }, process.env.JWT_SECRET, {
+    expiresIn: "7d",
+  });
+  logger.info(`Generated token: ${token}`);
   logger.info(`User data: ${userData}`);
   const tempUser = new User({
     id: nextUserId,
     ...userData,
+    token,
   });
   const { username, email } = userData;
   await tempUser.save();
